@@ -1,6 +1,6 @@
 {
   "name": "githubapp-with-workflow-test",
-  "version": "1.124.0",
+  "version": "1.125.0",
   "description": "",
   "main": "index.js",
   "scripts": {
