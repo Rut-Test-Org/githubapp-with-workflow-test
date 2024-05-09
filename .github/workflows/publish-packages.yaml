@@ -39,4 +39,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "yarn version --new-version minor && git add . && git commit -m 'Bumped minor version' && git push"
+      - run: "yarn version --new-version minor && git checkout main && git add . && git commit -m 'Bumped minor version' && git push"
