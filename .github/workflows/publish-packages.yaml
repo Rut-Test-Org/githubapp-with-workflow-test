@@ -39,4 +39,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: 'yarn version --new-version minor && git pull && git push'
+      - run: 'yarn version --no-commit-hooks --new-version minor && git pull && git push'
