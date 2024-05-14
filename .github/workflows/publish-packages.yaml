@@ -10,7 +10,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    if: ${{ github.actor != 'bypass-rule-test[bot]' && github.event_name != 'push' || github.event.pusher.name != 'bypass-rule-test[bot]' }}
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -35,4 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: yarn version --new-version minor --no-git-tag-version && git add . && git commit -m 'upgraded to v%s' && git push
+      - run: git checkout main && yarn version --new-version minor --no-git-tag-version && git add . && git commit -m 'bumped minor version' && git push
