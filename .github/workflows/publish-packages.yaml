@@ -2,10 +2,7 @@ name: Avoma Frontend Version Bump
 run-name: Bump version by @${{ github.actor }}
 
 on:
-  pull_request:
-    source: main
-    types:
-      - closed
+  push:
     branches:
       - main
 
