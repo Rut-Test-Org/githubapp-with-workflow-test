@@ -2,15 +2,22 @@ name: Avoma Frontend Version Bump
 run-name: Bump version by @${{ github.actor }}
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - closed
+    source:
+      types:
+        - merge
+      branches:
+        - main
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
