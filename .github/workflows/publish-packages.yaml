@@ -10,8 +10,6 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    run: echo ${{ github.event_name }}
-    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -23,6 +21,8 @@ jobs:
         with:
           app-id: ${{ vars.VERSION_BUMPER_APPID }}
           private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
+      - run: echo ${{ github.event_name }}
+      - run: echo ${{ github.actor }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
