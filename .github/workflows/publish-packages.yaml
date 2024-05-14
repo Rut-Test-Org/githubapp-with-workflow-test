@@ -35,6 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run:
-          yarn config set version-git-message "App has been updated to version %s"
-          yarn version --new-version minor && git push
+      - run: yarn config set version-git-message "Avoma Frontend App has been updated to version %s" && yarn version --new-version minor && git push
