@@ -10,7 +10,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    if: ${{ github.actor != 'github-actions[bot]' && github.event_name != 'push' || github.event.pusher.name != 'github-actions[bot]' }}
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -35,4 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: yarn version --new-version minor --no-git-tag-version && git add . && git commit -m --cleanup=verbatim 'bumped minor version [skip actions]' && git push
+      - run: yarn version --new-version minor --no-git-tag-version && git add . && git commit -m --cleanup=verbatim "bumped minor version [skip ci]" && git push
