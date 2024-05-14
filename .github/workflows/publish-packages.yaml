@@ -35,4 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: git checkout main && yarn config set version-git-message "[skip ci] upgraded to v%s" && yarn version --new-version minor && git push
+      - run: yarn version --new-version minor --no-git-tag-version && git add . && git commit -m 'upgraded to v%s' && git push
