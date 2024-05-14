@@ -18,7 +18,7 @@ jobs:
       actions: 'read'
     steps:
       - run: |
-        echo The PR was merged
+        echo "The PR was merged"
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
