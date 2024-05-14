@@ -1,10 +1,12 @@
 name: Avoma Frontend Version Bump
+run-name: Bump version by @${{ github.actor }}
+
 on:
   pull_request:
     types:
-      - closed
+      - [closed]
     branches:
-      - main
+      - 'main'
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,4 +37,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: yarn config set version-git-message "Avoma Frontend App has been updated to version %s" && yarn version --new-version minor && git push
+      - run: yarn config set version-git-message "upgraded to %s" && yarn version --new-version minor && git push
