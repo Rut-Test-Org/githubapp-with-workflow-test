@@ -10,6 +10,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
+    if: ${{ github.actor != 'bypass-rule-test[bot]' && github.event_name != 'push' || github.event.pusher.name != 'bypass-rule-test[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
@@ -21,8 +22,6 @@ jobs:
         with:
           app-id: ${{ vars.VERSION_BUMPER_APPID }}
           private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
-      - run: echo ${{ github.event_name }}
-      - run: echo ${{ github.actor }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
