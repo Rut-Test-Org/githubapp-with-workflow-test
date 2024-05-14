@@ -1,5 +1,5 @@
 name: Avoma Frontend Version Bump
-run-name: Bump version by @${{ github.actor }}
+run-name: Bump version by [bypass-rule-test[bot]]
 
 on:
   push:
@@ -35,4 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: git checkout main && yarn config set version-git-message "upgraded to v%s" && yarn version --new-version minor --no-git-tag-version && git push
+      - run: git checkout main && yarn config set version-git-message "bumped version to v%s" && yarn version --new-version minor && git push
