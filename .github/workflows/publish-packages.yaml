@@ -1,10 +1,11 @@
-name: Publish Packages
+name: Avoma Frontend Version Bump
 on:
+  push:
+    branches:
+      - master
   pull_request:
     types:
-      - [closed]
-    branches:
-      - 'main'
+      - closed
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,16 +26,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-      - name: Publish
+      - name: Publish New Version
         uses: actions/setup-node@v4
         with:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - run: 'yarn version --no-commit-hooks --new-version minor && git pull && git push'
-        - run: "yarn version --new-version minor" && "git add . && git commit -m 'Bumped minor version' && git push"
+      - run: 'yarn version --no-commit-hooks --new-version minor && git pull && git push'
