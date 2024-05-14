@@ -35,6 +35,4 @@ jobs:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: git checkout main && yarn version --new-version minor --no-git-tag-version && git add . && git commit -m "bumped minor version
-      
-      skip-checks:true" --cleanup=verbatim && git push
+      - run: git checkout main && yarn version --new-version minor --no-git-tag-version && git add . && git commit -m "bumped minor version \n\nskip-checks:true" --cleanup=verbatim && git push
