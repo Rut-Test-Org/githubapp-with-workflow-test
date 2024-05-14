@@ -26,21 +26,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # pulls all history and tags for Lerna to detect which packages changed
+          fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
-      # lerna can only add a commit if git user infos are set
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      # - name: Install Dependencies
-      #   run: npm ci
-      #   shell: bash
-
-      - name: publish
+      - name: Publish New Version
         uses: actions/setup-node@v4
         with:
           node-version: 20
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: 'yarn version --no-commit-hooks --new-version minor && git pull && git push'
+      # - run: 'yarn version --no-commit-hooks --new-version minor && git pull && git push'
+        - run: "yarn version --new-version minor" && "git add . && git commit -m 'Bumped minor version' && git push"
