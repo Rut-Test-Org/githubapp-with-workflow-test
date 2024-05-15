@@ -1,5 +1,5 @@
 name: Avoma Frontend Version Bump
-run-name: Bump version
+run-name: Avoma Frontend Version Bump
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       packages: 'write'
       actions: 'read'
     steps:
-      - run: echo ${{github.event_name}}
+      - run: echo ${{github.event.pusher.name}}
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
