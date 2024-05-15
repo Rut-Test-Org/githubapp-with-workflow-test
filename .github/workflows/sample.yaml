@@ -5,11 +5,9 @@ on:
     workflows: [Avoma Frontend Version Bump]
     types:
       - completed
-    branches:
-      - main
 
 jobs:
-  version-bump:
+  sample-workflow-testing:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World"

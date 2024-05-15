@@ -1,5 +1,5 @@
 name: Avoma Frontend Version Bump
-run-name: Bump version by [bypass-rule-test[bot]]
+run-name: Bump version
 
 on:
   push:
