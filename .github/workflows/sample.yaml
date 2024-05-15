@@ -1,4 +1,4 @@
-name: Sample Workflow
+name: Deployment
 
 on:
   workflow_run:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   sample-workflow-testing:
+    if: ${{ github.actor != 'bypass-rule-test[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World"
