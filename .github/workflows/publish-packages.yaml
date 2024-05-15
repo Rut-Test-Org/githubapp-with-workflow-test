@@ -10,7 +10,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    if: ${{ github.actor == 'bypass-rule-test[bot]' }}
+    if: ${{ github.actor != 'bypass-rule-test[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
