@@ -10,13 +10,14 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   version-bump:
-    if: ${{ github.actor == 'bypass-rule-test[bot]' && github.event_name == 'push' }}
+    if: ${{ github.actor == 'bypass-rule-test[bot]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
       packages: 'write'
       actions: 'read'
     steps:
+      - run: echo ${{github.event_name}}
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
